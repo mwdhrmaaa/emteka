@@ -54,9 +54,24 @@ class Solver {
         this.variablesContainer.classList.add('flex');
         
         const title = document.createElement('div');
-        title.className = 'w-full text-xs font-bold text-slate-400 uppercase tracking-wider mb-2';
-        title.innerText = 'Worksheet Mode: Enter Known Values';
+        title.className = 'w-full flex justify-between items-center mb-2';
+        title.innerHTML = `
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Worksheet Mode: Enter Known Values</span>
+            <button id="reset-vars-btn" class="text-[10px] uppercase font-bold text-red-400 hover:text-red-300 transition-colors">Reset</button>
+        `;
         this.variablesContainer.appendChild(title);
+        
+        // Bind Reset
+        setTimeout(() => {
+            const resetBtn = document.getElementById('reset-vars-btn');
+            if(resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    this.input.value = this.originalEquation;
+                    this.variableValues = {};
+                    this.renderVariableInputs(Object.keys(this.variableValues).length ? [] : vars); // re-render empty
+                });
+            }
+        }, 0);
 
         vars.forEach(v => {
             const wrapper = document.createElement('div');
