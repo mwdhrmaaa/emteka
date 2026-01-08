@@ -25,6 +25,7 @@ Route::name('public.')->group(function () {
         
         // Single Responsibility Actions
         Route::get('calculator', [MathController::class, 'calculator'])->name('calculator');
+        Route::get('graphing', [MathController::class, 'graphing'])->name('graphing');
         Route::get('formulas', [MathController::class, 'formulas'])->name('formulas');
         Route::get('solver', [MathController::class, 'solver'])->name('solver');
         

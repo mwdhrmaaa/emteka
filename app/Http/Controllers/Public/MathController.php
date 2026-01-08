@@ -38,4 +38,12 @@ class MathController extends Controller
     {
         return view('public.math.solver.index');
     }
+
+    /**
+     * Display the graphing calculator tool.
+     */
+    public function graphing()
+    {
+        return view('public.math.graphing.index');
+    }
 }

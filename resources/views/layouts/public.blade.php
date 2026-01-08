@@ -53,6 +53,7 @@
                     <div class="hidden md:block">
                         <a href="{{ route('public.math.calculator') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Calculator</a>
                         <a href="{{ route('public.math.solver') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Solver</a>
+                        <a href="{{ route('public.math.graphing') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Graphing</a>
                         <a href="{{ route('public.math.formulas') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Formulas</a>
                     </div>
                 </div>
