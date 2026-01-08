@@ -147,11 +147,12 @@ class Solver {
         // If exactly 1 variable remains, we can try to solve for it
         if (remainingVars.length === 1) {
              // Debounce or just solve?
-             this.solve(currentEq, remainingVars[0]);
+             // Pass false to disable auto-scroll on auto-update
+             this.solve(currentEq, remainingVars[0], false);
         }
     }
 
-    solve(expression, targetVar = null) {
+    solve(expression, targetVar = null, autoScroll = true) {
         this.clear();
         
         try {
@@ -177,10 +178,12 @@ class Solver {
             this.displayError("I couldn't understand that. Try 'solve(x^2+2x+1=0)', 'diff(sin(x))', or 'limit(sin(x)/x, x, 0)'.");
         }
         
-        // Auto-scroll to solution
-        setTimeout(() => {
-            this.output.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        // Auto-scroll to solution ONLY if requested (manual trigger)
+        if (autoScroll) {
+            setTimeout(() => {
+                this.output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
     }
 
     clear() {
