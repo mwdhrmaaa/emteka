@@ -122,6 +122,69 @@
                     </div>
                 </div>
             </div>
+            <!-- Logarithms -->
+            <div class="rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur-md">
+                <div class="mb-4 flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400">
+                        <span class="font-bold">ln</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">Logarithms</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Product Rule</p>
+                        <p class="mt-1 font-mono text-lg text-white">log(ab) = log(a) + log(b)</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Power Rule</p>
+                        <p class="mt-1 font-mono text-lg text-white">log(a^b) = b · log(a)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics -->
+            <div class="rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur-md">
+                <div class="mb-4 flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-500/20 text-yellow-400">
+                        <span class="font-bold">⚡</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">Physics</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Newton's Second Law</p>
+                        <p class="mt-1 font-mono text-lg text-white">F = m · a</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Kinetic Energy</p>
+                        <p class="mt-1 font-mono text-lg text-white">KE = ½mv²</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Einstein's Energy</p>
+                        <p class="mt-1 font-mono text-lg text-white">E = mc²</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finance -->
+            <div class="rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur-md">
+                <div class="mb-4 flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/20 text-green-400">
+                        <span class="font-bold">$</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">Finance</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Simple Interest</p>
+                        <p class="mt-1 font-mono text-lg text-white">I = P · r · t</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-950/50 p-4">
+                        <p class="text-xs font-medium uppercase text-slate-500">Compound Interest</p>
+                        <p class="mt-1 font-mono text-lg text-white">A = P(1 + r/n)^(nt)</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
