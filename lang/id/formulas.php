@@ -14,6 +14,9 @@ return [
                 ['title' => 'Deret Geometri', 'desc' => 'r: rasio umum'],
                 ['title' => 'Sifat Eksponen', 'desc' => 'a: basis, m,n: pangkat'],
                 ['title' => 'Teorema Binomial', 'desc' => 'n: pangkat, k: indeks suku'],
+                ['title' => 'Magnitudo Vektor', 'desc' => 'x,y,z: komponen'],
+                ['title' => 'Dot Product Vektor', 'desc' => 'a,b: vektor'],
+                ['title' => 'Rumus Euler', 'desc' => 'Relasi bilangan kompleks'],
             ]
         ],
         'geometry' => [
@@ -88,6 +91,12 @@ return [
                 ['title' => 'Energi Potensial', 'desc' => 'm: massa, g: gravitasi, h: tinggi'],
                 ['title' => 'Tekanan', 'desc' => 'P: Tekanan, F: Gaya, A: Luas'],
                 ['title' => 'Usaha', 'desc' => 'W: Usaha, F: Gaya, d: jarak'],
+                ['title' => 'Hukum Hooke', 'desc' => 'F: Gaya, k: konstanta, x: simpangan'],
+                ['title' => 'Momentum', 'desc' => 'p: momentum, m: massa, v: kecepatan'],
+                ['title' => 'Impuls', 'desc' => 'J: Impuls, F: Gaya, t: waktu'],
+                ['title' => 'Gaya Sentripetal', 'desc' => 'm: massa, v: kecepatan, r: jari-jari'],
+                ['title' => 'Gravitasi Universal', 'desc' => 'G: Konstanta, m: massa, r: jarak'],
+                ['title' => 'Hukum Snellius', 'desc' => 'n: indeks bias, θ: sudut'],
             ]
         ],
         'finance' => [
@@ -96,6 +105,19 @@ return [
                 ['title' => 'Bunga Tunggal', 'desc' => 'I: Bunga, P: Pokok, r: Suku Bunga, t: Waktu'],
                 ['title' => 'Bunga Majemuk', 'desc' => 'A: Jumlah Akhir, n: frekuensi bunga'],
                 ['title' => 'Nilai Masa Depan', 'desc' => 'FV: Nilai Depan, PV: Nilai Sekarang'],
+                ['title' => 'ROI (Investasi)', 'desc' => 'Laba atas Investasi'],
+                ['title' => 'Titik Impas (BEP)', 'desc' => 'Biaya Tetap / (Harga - Biaya Var)'],
+                ['title' => 'Persentase Markup', 'desc' => '(Harga - Biaya) / Biaya'],
+            ]
+        ],
+        'chemistry' => [
+            'title' => 'Kimia',
+            'formulas' => [
+                ['title' => 'Hukum Gas Ideal', 'desc' => 'P:Tekanan, V:Vol, n:Mol, T:Suhu'],
+                ['title' => 'Molaritas', 'desc' => 'n: Mol, V: Volume (L)'],
+                ['title' => 'Pengenceran', 'desc' => 'M1,V1: Awal, M2,V2: Akhir'],
+                ['title' => 'Derajat Keasaman (pH)', 'desc' => 'H: Konsentrasi ion H+'],
+                ['title' => 'Perpindahan Kalor', 'desc' => 'Q:Kalor, m:massa, c:kalor jenis, T:suhu'],
             ]
         ],
     ]

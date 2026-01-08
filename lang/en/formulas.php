@@ -14,6 +14,9 @@ return [
                 ['title' => 'Geometric Series', 'desc' => 'r: common ratio'],
                 ['title' => 'Exponent Product', 'desc' => 'a: base, m,n: powers'],
                 ['title' => 'Binomial Theorem', 'desc' => 'n: power, k: term index'],
+                ['title' => 'Vector Magnitude', 'desc' => 'x,y,z: components'],
+                ['title' => 'Vector Dot Product', 'desc' => 'a,b: vectors'],
+                ['title' => 'Euler\'s Formula', 'desc' => 'Complex numbers relation'],
             ]
         ],
         'geometry' => [
@@ -88,6 +91,12 @@ return [
                 ['title' => 'Potential Energy', 'desc' => 'm: mass, g: gravity, h: height'],
                 ['title' => 'Pressure', 'desc' => 'P: Pressure, F: Force, A: Area'],
                 ['title' => 'Work', 'desc' => 'W: Work, F: Force, d: distance'],
+                ['title' => 'Hooke\'s Law', 'desc' => 'F: Force, k: const, x: displ'],
+                ['title' => 'Momentum', 'desc' => 'p: momentum, m: mass, v: velocity'],
+                ['title' => 'Impulse', 'desc' => 'J: Impulse, F: Force, t: time'],
+                ['title' => 'Centripetal Force', 'desc' => 'm: mass, v: velocity, r: radius'],
+                ['title' => 'Universal Gravitation', 'desc' => 'G: Const, m1,m2: masses, r: dist'],
+                ['title' => 'Snell\'s Law', 'desc' => 'n: ref index, θ: angle'],
             ]
         ],
         'finance' => [
@@ -96,6 +105,19 @@ return [
                 ['title' => 'Simple Interest', 'desc' => 'I: Interest, P: Principal, r: Rate, t: Time'],
                 ['title' => 'Compound Interest', 'desc' => 'A: Final Amount, n: Compounding freq'],
                 ['title' => 'Future Value', 'desc' => 'FV: Future Val, PV: Present Val'],
+                ['title' => 'ROI', 'desc' => 'Return on Investment'],
+                ['title' => 'Break-even Point', 'desc' => 'Fixed Cost / (Price - Var Cost)'],
+                ['title' => 'Markup Percentage', 'desc' => '(Price - Cost) / Cost'],
+            ]
+        ],
+        'chemistry' => [
+            'title' => 'Chemistry',
+            'formulas' => [
+                ['title' => 'Ideal Gas Law', 'desc' => 'P:Pressure, V:Vol, n:Moles, T:Temp'],
+                ['title' => 'Molarity', 'desc' => 'n: Moles, V: Volume (L)'],
+                ['title' => 'Dilution', 'desc' => 'M1,V1: Initial, M2,V2: Final'],
+                ['title' => 'pH Level', 'desc' => 'H: Hydrogen ion conc.'],
+                ['title' => 'Heat Transfer (Specific)', 'desc' => 'Q:Heat, m:mass, c:specific heat, T:temp'],
             ]
         ],
     ]

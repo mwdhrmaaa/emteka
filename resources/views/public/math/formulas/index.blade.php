@@ -20,12 +20,14 @@
                         'eqs' => [
                             'x = (-b ± √(b² - 4ac)) / 2a', 'a² - b² = (a - b)(a + b)', 'y = mx + b',
                             'Sn = n/2(2a + (n-1)d)', 'Sn = a(1-r^n)/(1-r)', 'a^m · a^n = a^(m+n)',
-                            '(x+y)^n = Σ (nCk) x^(n-k) y^k'
+                            '(x+y)^n = Σ (nCk) x^(n-k) y^k', '|v| = √(x² + y² + z²)', 'a · b = |a||b|cosθ',
+                            'e^(ix) = cos(x) + i sin(x)'
                         ],
                         'raws' => [
                             'solve(a*x^2+b*x+c=0, x)', 'factor(a^2-b^2)', 'solve(y=m*x+b, x)',
                             'Sn=n/2*(2*a+(n-1)*d)', 'Sn=a*(1-r^n)/(1-r)', 'a^m*a^n',
-                            'expand((x+y)^n)'
+                            'expand((x+y)^n)', 'sqrt(x^2+y^2+z^2)', 'a*b*cos(theta)',
+                            'exp(i*x)'
                         ]
                     ],
                     'geometry' => [
@@ -71,11 +73,13 @@
                         'icon' => '⚡', 'bg' => 'bg-yellow-500/20', 'color' => 'text-yellow-400',
                         'eqs' => [
                             'F = m · a', 'KE = ½mv²', 'E = mc²', 'V = I · R', 'P = V · I', 'ρ = m / V',
-                            'v = u + at', 's = ut + ½at²', 'PE = mgh', 'P = F / A', 'W = F · d'
+                            'v = u + at', 's = ut + ½at²', 'PE = mgh', 'P = F / A', 'W = F · d',
+                            'F = -kx', 'p = mv', 'J = FΔt', 'Fc = mv²/r', 'F = Gm₁m₂/r²', 'n₁sinθ₁ = n₂sinθ₂'
                         ],
                         'raws' => [
                             'F=m*a', 'KE=0.5*m*v^2', 'E=m*c^2', 'V=I*R', 'P=V*I', 'rho=m/V',
-                            'v=u+a*t', 's=u*t+0.5*a*t^2', 'PE=m*g*h', 'P=F/A', 'W=F*d'
+                            'v=u+a*t', 's=u*t+0.5*a*t^2', 'PE=m*g*h', 'P=F/A', 'W=F*d',
+                            'F=-k*x', 'p=m*v', 'J=F*t', 'F=m*v^2/r', 'F=G*m1*m2/r^2', 'n1*sin(t1)=n2*sin(t2)'
                         ]
                     ],
                     'finance' => [
