@@ -101,7 +101,11 @@ class Solver {
 
     updateVariableValue(variable, value) {
         if (value && value.trim() !== '') {
-            this.variableValues[variable] = value;
+            // Handle Indonesian Number Format (comma as decimal)
+            // But be careful not to break array inputs [1,2] if we ever support them in variables
+            // For now, assume variable inputs are scalars for substitution
+            let cleanValue = value.replace(',', '.');
+            this.variableValues[variable] = cleanValue;
         } else {
             delete this.variableValues[variable];
         }
