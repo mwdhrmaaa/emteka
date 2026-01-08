@@ -119,7 +119,7 @@ class Solver {
         Object.keys(this.variableValues).forEach(v => {
             const val = this.variableValues[v];
             const regex = new RegExp('\\b' + v + '\\b', 'g');
-            currentEq = currentEq.replace(regex, val);
+            currentEq = currentEq.replace(regex, `(${val})`);
         });
         
         // Update main input
