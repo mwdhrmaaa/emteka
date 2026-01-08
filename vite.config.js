@@ -4,15 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     plugins: [
-        laravel({
-            input: [
+        laravel([
                 'resources/css/app.css', 
-                'resources/js/app.js',
-                'resources/js/calculator.js',
-                'resources/js/solver.js'
-            ],
-            refresh: true,
-        }),
+                'resources/js/app.js'
+            ]),
         tailwindcss(),
     ],
     server: {

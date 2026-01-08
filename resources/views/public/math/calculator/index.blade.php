@@ -82,6 +82,6 @@
 @endpush
 
 @push('scripts')
-    @vite(['resources/js/calculator.js'])
+    <script src="{{ asset('js/calculator.js') }}"></script>
 @endpush
 @endsection

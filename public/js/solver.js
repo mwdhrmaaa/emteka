@@ -1,4 +1,4 @@
-export class Solver {
+class Solver {
     constructor(inputElement, outputElement, stepsElement) {
         this.input = inputElement;
         this.output = outputElement;

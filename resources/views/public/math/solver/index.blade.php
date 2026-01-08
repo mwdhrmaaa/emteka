@@ -49,6 +49,6 @@
 </div>
 
 @push('scripts')
-    @vite(['resources/js/solver.js'])
+   <script src="{{ asset('js/solver.js') }}"></script>
 @endpush
 @endsection

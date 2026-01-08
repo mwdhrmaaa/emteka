@@ -1,4 +1,4 @@
-export class Calculator {
+class Calculator {
     constructor(displayElement, historyElement) {
         this.displayElement = displayElement;
         this.historyElement = historyElement;
