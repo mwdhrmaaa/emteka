@@ -46,4 +46,12 @@ class MathController extends Controller
     {
         return view('public.math.graphing.index');
     }
+
+    public function switchLanguage($locale)
+    {
+        if (in_array($locale, ['en', 'id'])) {
+            session(['locale' => $locale]);
+        }
+        return redirect()->back();
+    }
 }

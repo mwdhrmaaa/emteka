@@ -27,6 +27,7 @@ Route::name('public.')->group(function () {
         Route::get('calculator', [MathController::class, 'calculator'])->name('calculator');
         Route::get('graphing', [MathController::class, 'graphing'])->name('graphing');
         Route::get('formulas', [MathController::class, 'formulas'])->name('formulas');
+        Route::get('lang/{locale}', [MathController::class, 'switchLanguage'])->name('lang.switch');
         Route::get('solver', [MathController::class, 'solver'])->name('solver');
         
     });

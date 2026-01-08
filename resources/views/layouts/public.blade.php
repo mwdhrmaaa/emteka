@@ -55,6 +55,10 @@
                         <a href="{{ route('public.math.solver') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Solver</a>
                         <a href="{{ route('public.math.graphing') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Graphing</a>
                         <a href="{{ route('public.math.formulas') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Formulas</a>
+                        <div class="ml-4 flex items-center border-l border-white/10 pl-4">
+                            <a href="{{ route('public.lang.switch', 'en') }}" class="px-2 text-xs font-bold {{ app()->getLocale() == 'en' ? 'text-primary' : 'text-slate-500' }}">EN</a>
+                            <a href="{{ route('public.lang.switch', 'id') }}" class="px-2 text-xs font-bold {{ app()->getLocale() == 'id' ? 'text-primary' : 'text-slate-500' }}">ID</a>
+                        </div>
                     </div>
                 </div>
             </div>
