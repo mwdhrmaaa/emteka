@@ -24,6 +24,11 @@
                 @if(isset($formula['desc']))
                 <p class="mt-2 border-t border-white/5 pt-2 text-xs text-slate-400 font-mono">{{ $formula['desc'] }}</p>
                 @endif
+                @if(isset($formula['raw']) && !empty($formula['raw']))
+                <a href="{{ route('public.math.solver', ['eq' => $formula['raw']]) }}" class="mt-3 block w-full rounded bg-white/5 py-1.5 text-center text-xs font-bold text-primary transition-colors hover:bg-primary hover:text-white">
+                    Try in Solver
+                </a>
+                @endif
             </div>
             @endforeach
         </div>

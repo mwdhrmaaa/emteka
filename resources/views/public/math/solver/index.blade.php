@@ -48,6 +48,19 @@
             </button>
         </div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const eq = urlParams.get('eq');
+                if (eq) {
+                    const input = document.getElementById('equation-input');
+                    input.value = eq;
+                    // Optional: Auto-trigger solve if desired
+                    // document.getElementById('solve-btn').click();
+                }
+            });
+        </script>
+
         <!-- Solution Output -->
         <div id="solution-output" class="hidden overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-2xl backdrop-blur-xl">
             <div class="border-b border-white/5 bg-slate-950/50 px-6 py-4">
