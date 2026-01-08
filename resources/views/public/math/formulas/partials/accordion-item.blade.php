@@ -21,6 +21,9 @@
             <div class="rounded-lg bg-slate-950/50 p-4">
                 <p class="text-xs font-medium uppercase text-slate-500">{{ $formula['title'] }}</p>
                 <p class="mt-1 font-mono text-lg text-white">{{ $formula['eq'] }}</p>
+                @if(isset($formula['desc']))
+                <p class="mt-2 border-t border-white/5 pt-2 text-xs text-slate-400 font-mono">{{ $formula['desc'] }}</p>
+                @endif
             </div>
             @endforeach
         </div>
