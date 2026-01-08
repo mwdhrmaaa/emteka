@@ -21,6 +21,9 @@
                     ['title' => 'Quadratic Formula', 'eq' => 'x = (-b ± √(b² - 4ac)) / 2a'],
                     ['title' => 'Difference of Squares', 'eq' => 'a² - b² = (a - b)(a + b)'],
                     ['title' => 'Slope Intercept', 'eq' => 'y = mx + b'],
+                    ['title' => 'Arithmetic Series', 'eq' => 'Sn = n/2(2a + (n-1)d)'],
+                    ['title' => 'Geometric Series', 'eq' => 'Sn = a(1-r^n)/(1-r)'],
+                    ['title' => 'Exponent Product', 'eq' => 'a^m · a^n = a^(m+n)'],
                 ]
             ])
 
@@ -34,6 +37,9 @@
                     ['title' => 'Area of Circle', 'eq' => 'A = πr²'],
                     ['title' => 'Pythagorean Theorem', 'eq' => 'a² + b² = c²'],
                     ['title' => 'Volume of Cylinder', 'eq' => 'V = πr²h'],
+                    ['title' => 'Area of Triangle', 'eq' => 'A = ½bh'],
+                    ['title' => 'Volume of Sphere', 'eq' => 'V = 4/3πr³'],
+                    ['title' => 'Volume of Cone', 'eq' => 'V = ⅓πr²h'],
                 ]
             ])
 
@@ -47,6 +53,8 @@
                     ['title' => 'Identity', 'eq' => 'sin²θ + cos²θ = 1'],
                     ['title' => 'Sine Rule', 'eq' => 'a/sinA = b/sinB = c/sinC'],
                     ['title' => 'Cosine Rule', 'eq' => 'c² = a² + b² - 2ab cosC'],
+                    ['title' => 'Tangent Identity', 'eq' => 'tanθ = sinθ/cosθ'],
+                    ['title' => 'Double Angle', 'eq' => 'sin(2θ) = 2sinθcosθ'],
                 ]
             ])
 
@@ -59,6 +67,9 @@
                 'formulas' => [
                     ['title' => 'Power Rule', 'eq' => 'd/dx(x^n) = nx^(n-1)'],
                     ['title' => 'Integration by Parts', 'eq' => '∫udv = uv - ∫vdu'],
+                    ['title' => 'Product Rule', 'eq' => '(uv)\' = u\'v + uv\''],
+                    ['title' => 'Quotient Rule', 'eq' => '(u/v)\' = (u\'v - uv\')/v²'],
+                    ['title' => 'Chain Rule', 'eq' => 'dy/dx = dy/du · du/dx'],
                 ]
             ])
 
@@ -71,6 +82,8 @@
                 'formulas' => [
                     ['title' => 'Mean', 'eq' => 'μ = (Σx) / n'],
                     ['title' => 'Probability', 'eq' => 'P(A) = n(A) / n(S)'],
+                    ['title' => 'Variance', 'eq' => 'σ² = Σ(x - μ)² / n'],
+                    ['title' => 'Standard Deviation', 'eq' => 'σ = √Variance'],
                 ]
             ])
 
@@ -83,6 +96,7 @@
                 'formulas' => [
                     ['title' => 'Product Rule', 'eq' => 'log(ab) = log(a) + log(b)'],
                     ['title' => 'Power Rule', 'eq' => 'log(a^b) = b · log(a)'],
+                    ['title' => 'Quotient Rule', 'eq' => 'log(a/b) = log(a) - log(b)'],
                 ]
             ])
 
@@ -96,6 +110,9 @@
                     ['title' => 'Newton\'s Second Law', 'eq' => 'F = m · a'],
                     ['title' => 'Kinetic Energy', 'eq' => 'KE = ½mv²'],
                     ['title' => 'Einstein\'s Energy', 'eq' => 'E = mc²'],
+                    ['title' => 'Ohm\'s Law', 'eq' => 'V = I · R'],
+                    ['title' => 'Electric Power', 'eq' => 'P = V · I'],
+                    ['title' => 'Density', 'eq' => 'ρ = m / V'],
                 ]
             ])
 
@@ -108,6 +125,7 @@
                 'formulas' => [
                     ['title' => 'Simple Interest', 'eq' => 'I = P · r · t'],
                     ['title' => 'Compound Interest', 'eq' => 'A = P(1 + r/n)^(nt)'],
+                    ['title' => 'Future Value', 'eq' => 'FV = PV(1 + r)^t'],
                 ]
             ])
 
