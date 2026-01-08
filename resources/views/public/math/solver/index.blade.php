@@ -26,24 +26,29 @@
             </div>
         </div>
 
+        <!-- Variable Inputs (Worksheet Mode) -->
+        <div id="variable-inputs" class="mb-8 hidden flex-wrap gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all">
+            <!-- Dynamic Inputs will appear here -->
+        </div>
+
         <!-- Examples / Quick Insert -->
         <div class="mb-12 flex flex-wrap justify-center gap-2">
-            <button onclick="document.getElementById('equation-input').value = 'solve(x^2+5x+6=0)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'solve(x^2+5x+6=0)'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Quadratic
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'diff(x^3 + 2x^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'diff(x^3 + 2x^2)'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Derivative
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'integrate(cos(x))'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'integrate(cos(x))'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Integral
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'factor(x^2-y^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'factor(x^2-y^2)'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Factorization
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'limit(sin(x)/x, x, 0)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'limit(sin(x)/x, x, 0)'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Limit
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'determinant([[1,2],[3,4]])'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'determinant([[1,2],[3,4]])'; window.checkForVariables && window.checkForVariables();" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Matrix Det
             </button>
         </div>
@@ -55,8 +60,12 @@
                 if (eq) {
                     const input = document.getElementById('equation-input');
                     input.value = eq;
-                    // Optional: Auto-trigger solve if desired
-                    // document.getElementById('solve-btn').click();
+                    // Trigger variable detection immediately
+                    setTimeout(() => {
+                        if (window.solverInstance) {
+                            window.solverInstance.detectAndSetupVariables(eq);
+                        }
+                    }, 500);
                 }
             });
         </script>
