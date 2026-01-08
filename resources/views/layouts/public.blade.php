@@ -52,10 +52,22 @@
                     </a>
                     
                     <div class="hidden md:flex items-center gap-1">
-                        <a href="{{ route('public.math.calculator') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Calculator</a>
-                        <a href="{{ route('public.math.solver') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Solver</a>
-                        <a href="{{ route('public.math.graphing') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Graphing</a>
-                        <a href="{{ route('public.math.formulas') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Formulas</a>
+                        <a href="{{ route('public.math.calculator') }}" 
+                           class="rounded-md px-3 py-2 text-sm font-medium transition-colors {{ request()->routeIs('public.math.calculator*') ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                           Calculator
+                        </a>
+                        <a href="{{ route('public.math.solver') }}" 
+                           class="rounded-md px-3 py-2 text-sm font-medium transition-colors {{ request()->routeIs('public.math.solver*') ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                           Solver
+                        </a>
+                        <a href="{{ route('public.math.graphing') }}" 
+                           class="rounded-md px-3 py-2 text-sm font-medium transition-colors {{ request()->routeIs('public.math.graphing*') ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                           Graphing
+                        </a>
+                        <a href="{{ route('public.math.formulas') }}" 
+                           class="rounded-md px-3 py-2 text-sm font-medium transition-colors {{ request()->routeIs('public.math.formulas*') ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                           Formulas
+                        </a>
                     </div>
                 </div>
 
