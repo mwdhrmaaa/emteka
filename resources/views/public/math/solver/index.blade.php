@@ -37,8 +37,14 @@
             <button onclick="document.getElementById('equation-input').value = 'integrate(cos(x))'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Integral
             </button>
-             <button onclick="document.getElementById('equation-input').value = 'factor(x^2-y^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+            <button onclick="document.getElementById('equation-input').value = 'factor(x^2-y^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
                 Factorization
+            </button>
+            <button onclick="document.getElementById('equation-input').value = 'limit(sin(x)/x, x, 0)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Limit
+            </button>
+            <button onclick="document.getElementById('equation-input').value = 'determinant([[1,2],[3,4]])'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Matrix Det
             </button>
         </div>
 
@@ -59,6 +65,7 @@
    <script src="{{ asset('js/vendor/nerdamer.alg.js') }}"></script>
    <script src="{{ asset('js/vendor/nerdamer.calc.js') }}"></script>
    <script src="{{ asset('js/vendor/nerdamer.solve.js') }}"></script>
+   <script src="{{ asset('js/vendor/nerdamer.extra.js') }}"></script>
    <script src="{{ asset('js/solver.js') }}"></script>
 @endpush
 @endsection

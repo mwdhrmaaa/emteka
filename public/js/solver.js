@@ -14,14 +14,21 @@ class Solver {
                 this.solveCalculus(expression, 'diff');
             } else if (expression.startsWith('integrate(') || expression.includes('integrate(')) {
                 this.solveCalculus(expression, 'integrate');
+            } else if (expression.startsWith('limit(') || expression.includes('limit(')) {
+                this.solveLimit(expression);
             } else if (expression.includes('=')) {
                 this.solveEquation(expression);
             } else {
-                this.simplifyExpression(expression);
+                // formatting check for matrices [[a,b],[c,d]]
+                if(expression.includes('[[') && expression.includes(']]')) {
+                    this.solveMatrix(expression);
+                } else {
+                    this.simplifyExpression(expression);
+                }
             }
         } catch (e) {
             console.error(e);
-            this.displayError("I couldn't understand that. Try 'solve(x^2+2x+1=0)' or 'diff(sin(x))'.");
+            this.displayError("I couldn't understand that. Try 'solve(x^2+2x+1=0)', 'diff(sin(x))', or 'limit(sin(x)/x, x, 0)'.");
         }
     }
 
@@ -37,51 +44,52 @@ class Solver {
 
     solveEquation(eq) {
         this.addStep('Equation Detected', `Solving for x in: ${eq}`);
-        
-        // Use Nerdamer to solve
         const solution = nerdamer.solve(eq, 'x');
-        
-        // Format Result
-        // solution is an object with data, or string
         const result = solution.toString();
         
-        // Try to explain steps (Nerdamer doesn't give steps natively in free version easily, we simulate basic explanation)
         this.addStep('Symbolic Solution', 
             `Nerdamer Engine processed the equation.`, 
             `<strong class="text-primary text-xl">x = ${result}</strong>`
         );
         
-        // Check for decimal approximation if result looks complex
         if (result.includes('sqrt') || result.includes('/')) {
              try {
                 const decimal = solution.evaluate().text();
                 this.addStep('Decimal Approximation', `x ≈ ${decimal}`);
              } catch(e) {}
         }
-
         this.output.classList.remove('hidden');
     }
 
     solveCalculus(expr, type) {
         const action = type === 'diff' ? 'Differentiation' : 'Integration';
         this.addStep(`${action} Detected`, `Processing: ${expr}`);
-
         const result = nerdamer(expr).toString();
+        this.addStep('Result', `<strong class="text-primary text-xl">${result}</strong>`);
+        this.output.classList.remove('hidden');
+    }
 
-        this.addStep('Result', 
-            `<strong class="text-primary text-xl">${result}</strong>`
-        );
+    solveLimit(expr) {
+        this.addStep('Limit Detected', `Evaluating: ${expr}`);
+        // user inputs limit(expression, variable, value) e.g. limit(sin(x)/x, x, 0)
+        const result = nerdamer(expr).toString();
+        this.addStep('Limit Result', `<strong class="text-primary text-xl">${result}</strong>`);
+        this.output.classList.remove('hidden');
+    }
+
+    solveMatrix(expr) {
+        this.addStep('Matrix Operation', `Processing: ${expr}`);
+        // e.g. determinant([[1,2],[3,4]]) OR invert([[1,2],[3,4]]) OR just [[1,2],[3,4]]+[[1,0],[0,1]]
+        // Nerdamer handles these generically if parsed correctly
+        const result = nerdamer(expr).toString();
+        this.addStep('Result', `<strong class="text-primary text-xl break-all">${result}</strong>`);
         this.output.classList.remove('hidden');
     }
 
     simplifyExpression(expr) {
-        this.addStep('Expression Simplification', `Simplifying: ${expr}`);
-        
+        this.addStep('Expression/Command', `Processing: ${expr}`);
         const result = nerdamer(expr).toString();
-        
-        this.addStep('Result', 
-            `<strong class="text-primary text-xl">${result}</strong>`
-        );
+        this.addStep('Result', `<strong class="text-primary text-xl">${result}</strong>`);
         this.output.classList.remove('hidden');
     }
 
