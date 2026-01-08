@@ -5,20 +5,23 @@ class Solver {
         this.steps = stepsElement;
     }
 
-    solve(equation) {
+    solve(expression) {
         this.clear();
-        equation = equation.replace(/\s+/g, '').replace('*', ''); // Remove spaces
         
         try {
-            if (this.isQuadratic(equation)) {
-                this.solveQuadratic(equation);
-            } else if (this.isLinear(equation)) {
-                this.solveLinear(equation);
+            // Check for specific commands
+            if (expression.startsWith('diff(') || expression.includes('diff(')) {
+                this.solveCalculus(expression, 'diff');
+            } else if (expression.startsWith('integrate(') || expression.includes('integrate(')) {
+                this.solveCalculus(expression, 'integrate');
+            } else if (expression.includes('=')) {
+                this.solveEquation(expression);
             } else {
-                this.displayError("I can currently only solve Linear (ax+b=c) and Quadratic (ax^2+bx+c=0) equations.");
+                this.simplifyExpression(expression);
             }
         } catch (e) {
-            this.displayError("Invalid equation format. Please check your syntax.");
+            console.error(e);
+            this.displayError("I couldn't understand that. Try 'solve(x^2+2x+1=0)' or 'diff(sin(x))'.");
         }
     }
 
@@ -32,86 +35,53 @@ class Solver {
         this.steps.innerHTML = `<div class="text-red-400 p-4 border border-red-500/20 rounded-lg bg-red-500/10">${msg}</div>`;
     }
 
-    // Heuristic detection
-    isQuadratic(eq) {
-        return eq.includes('x^2');
-    }
-
-    isLinear(eq) {
-        return !eq.includes('x^2') && eq.includes('x') && eq.includes('=');
-    }
-
-    solveLinear(eq) {
-        // Format: ax + b = c
-        // Use basic parsing logic (very simplified for demo)
-        // Assume standard form: 2x+5=15
+    solveEquation(eq) {
+        this.addStep('Equation Detected', `Solving for x in: ${eq}`);
         
-        const sides = eq.split('=');
-        let lhs = sides[0];
-        let rhs = parseFloat(sides[1]); // 15
+        // Use Nerdamer to solve
+        const solution = nerdamer.solve(eq, 'x');
         
-        // Parse LHS
-        // Extract 'a' from 'ax'
-        let aMatch = lhs.match(/(-?\d*)x/);
-        let a = (aMatch && (aMatch[1] === '' || aMatch[1] === '-')) ? (aMatch[1] === '-' ? -1 : 1) : parseFloat(aMatch[1]);
-        if (isNaN(a)) a = 1;
-
-        // Extract 'b'
-        let bMatch = lhs.replace(aMatch[0], '').match(/([+-]?\d+)/);
-        let b = bMatch ? parseFloat(bMatch[0]) : 0;
+        // Format Result
+        // solution is an object with data, or string
+        const result = solution.toString();
         
-        this.addStep(`Parsed Equation: ${a}x ${b >= 0 ? '+' : ''}${b} = ${rhs}`);
-
-        // Step 1: Move b to rhs
-        let rhsStep1 = rhs - b;
-        this.addStep(`Subtract ${b} from both sides:`, `${a}x = ${rhs} - ${b}`, `${a}x = ${rhsStep1}`);
-
-        // Step 2: Divide by a
-        let result = rhsStep1 / a;
-        this.addStep(`Divide by ${a}:`, `x = ${rhsStep1} / ${a}`, `<strong class="text-primary text-xl">x = ${result}</strong>`);
+        // Try to explain steps (Nerdamer doesn't give steps natively in free version easily, we simulate basic explanation)
+        this.addStep('Symbolic Solution', 
+            `Nerdamer Engine processed the equation.`, 
+            `<strong class="text-primary text-xl">x = ${result}</strong>`
+        );
+        
+        // Check for decimal approximation if result looks complex
+        if (result.includes('sqrt') || result.includes('/')) {
+             try {
+                const decimal = solution.evaluate().text();
+                this.addStep('Decimal Approximation', `x ≈ ${decimal}`);
+             } catch(e) {}
+        }
 
         this.output.classList.remove('hidden');
     }
 
-    solveQuadratic(eq) {
-        // Format: ax^2+bx+c=0
-        // Currently expects = 0 at the end
+    solveCalculus(expr, type) {
+        const action = type === 'diff' ? 'Differentiation' : 'Integration';
+        this.addStep(`${action} Detected`, `Processing: ${expr}`);
+
+        const result = nerdamer(expr).toString();
+
+        this.addStep('Result', 
+            `<strong class="text-primary text-xl">${result}</strong>`
+        );
+        this.output.classList.remove('hidden');
+    }
+
+    simplifyExpression(expr) {
+        this.addStep('Expression Simplification', `Simplifying: ${expr}`);
         
-        let lhs = eq.split('=')[0];
-
-        // Parse a
-        let aMatch = lhs.match(/(-?\d*)x\^2/);
-        let a = (aMatch && (aMatch[1] === '' || aMatch[1] === '-')) ? (aMatch[1] === '-' ? -1 : 1) : parseFloat(aMatch[1] || 1);
+        const result = nerdamer(expr).toString();
         
-        // Parse b
-        let remaining = lhs.replace(aMatch[0], '');
-        let bMatch = remaining.match(/([+-]?\d*)x(?!\^)/);
-        let b = 0;
-        if (bMatch) {
-            b = (bMatch[1] === '' || bMatch[1] === '+') ? 1 : (bMatch[1] === '-' ? -1 : parseFloat(bMatch[1]));
-        }
-
-        // Parse c
-        let cMatch = remaining.replace(bMatch ? bMatch[0] : '', '').match(/([+-]?\d+)/);
-        let c = cMatch ? parseFloat(cMatch[0]) : 0;
-
-        this.addStep(`Identified Coefficients:`, `a = ${a}, b = ${b}, c = ${c}`);
-
-        // Quadratic Formula
-        let discriminant = (b * b) - (4 * a * c);
-        this.addStep(`Calculate Discriminant (Δ = b² - 4ac):`, `Δ = (${b})² - 4(${a})(${c})`, `Δ = ${discriminant}`);
-
-        if (discriminant > 0) {
-            let root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-            let root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-            this.addStep(`Δ > 0, Two Real Solutions:`, `x = (-b ± √Δ) / 2a`, `<strong class="text-primary text-xl">x₁ = ${root1.toFixed(2)}, x₂ = ${root2.toFixed(2)}</strong>`);
-        } else if (discriminant === 0) {
-            let root = -b / (2 * a);
-            this.addStep(`Δ = 0, One Real Solution:`, `<strong class="text-primary text-xl">x = ${root}</strong>`);
-        } else {
-            this.addStep(`Δ < 0, No Real Solutions`);
-        }
-        
+        this.addStep('Result', 
+            `<strong class="text-primary text-xl">${result}</strong>`
+        );
         this.output.classList.remove('hidden');
     }
 
@@ -120,7 +90,7 @@ class Solver {
         step.className = 'border-l-2 border-primary/30 pl-4 py-2';
         step.innerHTML = `
             <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">${title}</h4>
-            ${details.map(d => `<div class="mt-1 font-mono text-white text-lg">${d}</div>`).join('')}
+            ${details.map(d => `<div class="mt-1 font-mono text-white text-lg break-all">${d}</div>`).join('')}
         `;
         this.steps.appendChild(step);
     }

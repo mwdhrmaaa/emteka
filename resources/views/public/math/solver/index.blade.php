@@ -28,11 +28,17 @@
 
         <!-- Examples / Quick Insert -->
         <div class="mb-12 flex flex-wrap justify-center gap-2">
-            <button onclick="document.getElementById('equation-input').value = '2x + 10 = 24'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
-                Linear Example
+            <button onclick="document.getElementById('equation-input').value = 'solve(x^2+5x+6=0)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Quadratic
             </button>
-            <button onclick="document.getElementById('equation-input').value = 'x^2 + 5x + 6 = 0'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
-                Quadratic Example
+            <button onclick="document.getElementById('equation-input').value = 'diff(x^3 + 2x^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Derivative
+            </button>
+            <button onclick="document.getElementById('equation-input').value = 'integrate(cos(x))'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Integral
+            </button>
+             <button onclick="document.getElementById('equation-input').value = 'factor(x^2-y^2)'" class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-400 transition-colors hover:bg-white/10 hover:text-white">
+                Factorization
             </button>
         </div>
 
@@ -49,6 +55,10 @@
 </div>
 
 @push('scripts')
+   <script src="{{ asset('js/vendor/nerdamer.core.js') }}"></script>
+   <script src="{{ asset('js/vendor/nerdamer.alg.js') }}"></script>
+   <script src="{{ asset('js/vendor/nerdamer.calc.js') }}"></script>
+   <script src="{{ asset('js/vendor/nerdamer.solve.js') }}"></script>
    <script src="{{ asset('js/solver.js') }}"></script>
 @endpush
 @endsection
