@@ -157,6 +157,11 @@ class Solver {
             console.error(e);
             this.displayError("I couldn't understand that. Try 'solve(x^2+2x+1=0)', 'diff(sin(x))', or 'limit(sin(x)/x, x, 0)'.");
         }
+        
+        // Auto-scroll to solution
+        setTimeout(() => {
+            this.output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     }
 
     clear() {
