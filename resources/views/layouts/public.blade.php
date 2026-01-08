@@ -42,6 +42,7 @@
     <nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
+                <!-- Left: Logo & Nav -->
                 <div class="flex items-center gap-8">
                     <a href="{{ route('public.home') }}" class="flex items-center gap-2">
                         <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary">
@@ -50,15 +51,19 @@
                         <span class="text-xl font-bold tracking-tight">Emteka</span>
                     </a>
                     
-                    <div class="hidden md:block">
+                    <div class="hidden md:flex items-center gap-1">
                         <a href="{{ route('public.math.calculator') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Calculator</a>
                         <a href="{{ route('public.math.solver') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Solver</a>
                         <a href="{{ route('public.math.graphing') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Graphing</a>
                         <a href="{{ route('public.math.formulas') }}" class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">Formulas</a>
-                        <div class="ml-4 flex items-center border-l border-white/10 pl-4">
-                            <a href="{{ route('public.lang.switch', 'en') }}" class="px-2 text-xs font-bold {{ app()->getLocale() == 'en' ? 'text-primary' : 'text-slate-500' }}">EN</a>
-                            <a href="{{ route('public.lang.switch', 'id') }}" class="px-2 text-xs font-bold {{ app()->getLocale() == 'id' ? 'text-primary' : 'text-slate-500' }}">ID</a>
-                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Language Switcher -->
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center rounded-full border border-white/10 bg-white/5 p-1">
+                        <a href="{{ route('public.lang.switch', 'en') }}" class="rounded-full px-3 py-1 text-xs font-bold transition-all {{ app()->getLocale() == 'en' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:text-white' }}">EN</a>
+                        <a href="{{ route('public.lang.switch', 'id') }}" class="rounded-full px-3 py-1 text-xs font-bold transition-all {{ app()->getLocale() == 'id' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:text-white' }}">ID</a>
                     </div>
                 </div>
             </div>
